@@ -1,18 +1,54 @@
-document.getElementById('ballerinaButton').addEventListener('click', function() {
-    // Create sparkles effect
-    const sparkles = document.createElement('div');
-    sparkles.classList.add('sparkles');
-    this.appendChild(sparkles);
+body {
+    font-family: Italic;
+    margin: 0;
+    padding: 0;
+    background-color:#fdd9e4 ;
+    text-align: center;
+}
 
-    // Show the fairy
-    const fairy = document.getElementById('fairy');
-    fairy.classList.remove('hidden');
-    setTimeout(() => {
-        fairy.style.opacity = 1; // Fade in the fairy
-    }, 100);
+header {
+    background: #fdd9e4;
+    color: #ffffff;
+    padding: 10px 0;
+}
 
-    // Redirect to the video page after a short delay
-    setTimeout(() => {
-        window.location.href = 'video.html'; // Change this to your video page
-    }, 2000); // 2 seconds delay
-});
+.ballerina-button {
+    font-size: 50px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.ballerina-button:focus {
+    outline: none;
+}
+
+#fairy {
+    position: absolute;
+    top: 20%; /* Adjust position as needed */
+    left: 45%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 2; /* Ensure fairy is above other elements */
+}
+
+.fairy-image {
+    width: 100px; /* Set the width of the fairy image */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.sparkles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('picmix.com_534350') no-repeat center center;
+    background-size: cover;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hidden {
+    display: none;
+}
