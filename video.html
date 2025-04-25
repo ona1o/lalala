@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Page</title>
+    <style>
+        body {
+            background-color: pink;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column; /* Stack elements vertically */
+        }
+        iframe {
+            width: 80%;
+            height: 80%;
+            border: none; /* Remove border */
+        }
+        #questionBox {
+            display: none; /* Hide the question box initially */
+            margin-top: 20px;
+            text-align: center;
+        }
+        .response-button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <iframe id="video" width="315" height="560" src="https://www.youtube.com/embed/Xa7_zGE3XbU?enablejsapi=1" title="ballerina cappuccina☕" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    
+    <div id="questionBox">
+        <p>Do I get extra points for creativity?</p>
+        <button class="response-button" onclick="submitResponse('Yes')">Yes</button>
+        <button class="response-button" onclick="submitResponse('No')">No</button>
+    </div>
+
+    <script>
+        // Load the YouTube IFrame Player API code asynchronously
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('video', {
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
